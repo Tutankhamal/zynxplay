@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --neon-blue: #00d4ff;
+  --neon-green: #00ff88;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Efeito de luz principal mais visível */
+.main-light-effect {
+  position: absolute;
+  top: 25%;
+  left: 39%;
+  transform: translate(-50%, -50%);
+  width: 1200px;
+  height: 1200px;
+  background: radial-gradient(circle,
+   #00f3ff75 10%,
+   #4b00ff3d 40%, 
+   #007bff1f 60%, 
+   #4b00ff1a 80%, 
+   #00000000 100%);
+
+    
+  border-radius: 50%;
+  filter: blur(180px);
+  z-index: 0;
+  pointer-events: none;
+  animation: light-pulse 4s ease-in-out infinite alternate;
+}
+
+/* Efeito de luz secundário */
+.secondary-light {
+  position: fixed;
+  top: 60%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, 
+    #00f3ff75 0%, 
+    #4b00ff3d 40%, 
+    transparent 70%);
+  border-radius: 50%;
+  filter: blur(180px);
+  z-index: 0;
+  pointer-events: none;
+  animation: light-pulse 6s ease-in-out infinite alternate-reverse;
+}
+
+/* Animação de pulso para as luzes */
+@keyframes light-pulse {
+  0% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* Glassmorphism corrigido para fundo preto */
+.glass {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    rgba(255, 255, 255, 0.05) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: sticky;
+}
+
+/* Glassmorphism mais sutil para cards */
+.glass-card {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.08) 0%, 
+    rgba(255, 255, 255, 0.03) 100%);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: 
+    0 4px 24px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  position: sticky;
+}
+
+/* Glassmorphism para header */
+.glass-header {
+  background: linear-gradient(135deg, 
+    rgba(0, 0, 0, 0.8) 0%, 
+    rgba(0, 0, 0, 0.6) 100%);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.neon-glow {
+  box-shadow: 
+    0 0 10px var(--neon-blue),
+    0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.neon-text {
+  text-shadow: 
+    0 0 10px var(--neon-blue),
+    0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+.hover-scale {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.smooth-transition {
+  transition: all 0.3s ease;
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 136, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(0, 255, 136, 0.6); }
+}
+
+/* Overlay escuro para modais */
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.98);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+/* Radial gradient utility for home page */
+.bg-gradient-radial {
+  background: radial-gradient(var(--tw-gradient-stops));
+}
